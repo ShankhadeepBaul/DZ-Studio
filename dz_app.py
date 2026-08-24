@@ -2,13 +2,10 @@
 dz_app.py  --  the DZ Studio desktop app
 =========================================
 
-This is the graphical front end. It deliberately contains no geochronology and
-no plotting maths of its own: it reads an Excel file, lets you pick samples and
-set options with widgets, then calls the real work in dz_figs.py (KDE + pie,
+This is the graphical front end. It contains no geochronology and no plotting maths of its own: it reads an Excel file, lets you pick samples and set options with widgets, then calls the real work in dz_figs.py (KDE + pie,
 MDS) and dz_mda.py (maximum depositional age) and shows the result.
 
-That split is the thing to understand before reading this file: if a NUMBER is
-wrong, look in dz_figs.py / dz_mda.py; if the WINDOW or a control misbehaves,
+That split is the thing to understand before reading this file: if a NUMBER is wrong, look in dz_figs.py / dz_mda.py; if the WINDOW or a control misbehaves,
 look here.
 
 Layout of the file, top to bottom:
@@ -109,9 +106,6 @@ class ColorButton(QtWidgets.QPushButton):
         super().__init__()
         self.setFixedSize(30, 18)
         self.setCursor(Qt.PointingHandCursor)
-        # a unique object name so the stylesheet targets ONLY this button and
-        # can't cascade into the colour dialog (which would tint the whole
-        # picker the swatch's colour).
         ColorButton._n += 1
         self.setObjectName(f"swatch{ColorButton._n}")
         self._c = color
@@ -132,8 +126,6 @@ class ColorButton(QtWidgets.QPushButton):
         return self._c
 
     def _pick(self):
-        # parent the dialog to the top-level window, never to the coloured
-        # swatch, so the dialog uses the normal window palette.
         c = QtWidgets.QColorDialog.getColor(
             QtGui.QColor(self._c), self.window(), "Select colour")
         if c.isValid():
@@ -143,7 +135,7 @@ class ColorButton(QtWidgets.QPushButton):
 
 
 # ----------------------------------------------------------------------
-# sample list: tick + drag to reorder  (this replaces the SAMPLES list)
+#                   sample list: tick + drag to reorder  
 # ----------------------------------------------------------------------
 
 class SampleList(QtWidgets.QWidget):
@@ -364,7 +356,6 @@ class FigureView(QtWidgets.QGraphicsView):
         self.setAlignment(Qt.AlignCenter)
 
     def set_pixmap(self, pm):
-        # keep the current zoom/scroll for a fixed zoom; snap to fit otherwise
         self._scene.clear()
         self.item = self._scene.addPixmap(pm)
         self.item.setTransformationMode(Qt.SmoothTransformation)
