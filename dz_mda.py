@@ -123,10 +123,6 @@ def youngest_cluster_indices(ages, sig1, n_min=3, k=2.0, contiguous=True):
     tops = ao + so
     bottoms = ao - so
 
-    # Walk candidate anchors from youngest (smallest age+k*sigma) upward. For
-    # each anchor i, `overlaps` marks which later grains reach back below the
-    # anchor's top. Contiguous mode stops at the first non-overlapping grain;
-    # the run counts only if it is at least n_min long.
     for i in range(n):
         overlaps = bottoms[i:] < tops[i]      # each grain vs the anchor top
         if contiguous:
@@ -175,7 +171,7 @@ def youngest_pdp_peak(ages, sig1):
 #  The methods
 #  compute() runs every MDA method on one sample and returns their ages,
 #  uncertainties, MSWD and cluster membership. table_row() formats those
-#  into one tidy row for the results table.
+#  into one row for the results table.
 # ----------------------------------------------------------------------
 
 @dataclass
@@ -232,7 +228,7 @@ def compute(ages, sig1, params: MDAParams) -> dict:
 
     # YC1s: >=2 grains at 1 sigma
     out["YC1s"] = cluster_result(2, 1.0, "YC1s")
-    # YC2s: user's main definition (default n_min/k come from params)
+    # YC2s: >=3 grains at 2 sigma
     out["YC2s"] = cluster_result(params.n_min, params.k_sigma, "YC2s")
 
     # --- YPP ---------------------------------------------------------
