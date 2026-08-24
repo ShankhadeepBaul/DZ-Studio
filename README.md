@@ -1,8 +1,8 @@
 # DZ Studio
 
-A small desktop app for making detrital-zircon figures — kernel-density (KDE)
-plots with provenance pies, multidimensional-scaling (MDS) maps, and
-maximum-depositional-age (MDA) plots — without writing any code.
+A small desktop app for making detrital-zircon figures — kernel density (KDE)
+plots with provenance pies, multidimensional scaling (MDS) maps, and
+maximum depositional age (MDA) plots, without writing any code.
 
 It began as a set of Jupyter notebooks and was wrapped in a window so that
 people who don't program can pick samples, adjust settings with sliders and
