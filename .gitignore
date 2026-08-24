@@ -1,0 +1,23 @@
+# Build output (these are huge and machine-specific — never commit them)
+build/
+dist/
+*.spec
+__pycache__/
+*.pyc
+
+# Packaged apps go in a GitHub Release, not the repo
+*.zip
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Data — don't commit anyone's zircon data by default
+*.xlsx
+!example_data.xlsx
+
+# Jupyter notebooks are kept local, not published to the public repo
+*.ipynb
+.ipynb_checkpoints/
