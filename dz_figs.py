@@ -3,8 +3,7 @@ dz_figs.py  --  the science and the plotting
 =============================================
 
 This module draws the two "figure" tabs in DZ Studio: the KDE + pie panels and
-the MDS map. If you want to understand or reuse the actual geochronology
-plotting, this is the file to read.
+the MDS map. 
 
 What lives here, top to bottom:
 
@@ -320,11 +319,6 @@ def _plot_panel(ax, a, age_range, bandwidth, bin_width, cfg: KDEConfig):
                             color=col, alpha=0.95, linewidth=0)
         ax.plot(x_grid, kde_scaled, color="black", lw=0.7)
 
-    # Histogram outline as ONE artist. Equivalent to the notebook's
-    #     ax.bar(centers, counts, width=bin_width*0.95,
-    #            facecolor="none", edgecolor="black", linewidth=0.5, zorder=3)
-    # but drawn as a single PolyCollection instead of one Rectangle per bar
-    # (ax.bar was ~70% of the redraw time with ~100 bins x 2 panels x n samples).
     hw = bin_width * 0.95 / 2.0
     verts = [[(c - hw, 0), (c + hw, 0), (c + hw, h), (c - hw, h)]
              for c, h in zip(centers, counts)]
