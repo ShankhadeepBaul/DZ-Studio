@@ -27,22 +27,11 @@ program can read, reuse, or modify them.
   Sharman & Malkowski (2020) definitions.
 
 ---
+## Run without Python (pre-built GUI) (Preferred)
 
-## Install and run (from source)
+Non-programmers can use a pre-built GUI that bundles everything
 
-Requires Python 3.10 or newer.
-
-```
-pip install -r requirements.txt
-python dz_app.py
-```
-
-That opens the app. Open your Excel file, pick the sample and age columns,
-tick some samples, and the figure appears.
-
-## Run without Python (pre-built app)
-
-Non-programmers can use a pre-built app that bundles everything:
+**Go to the releases page and download the respective zip according to your Operating system**
 
 - Download the zip for your OS from the **Releases** page, unzip it, and run
   `DZ Studio` inside. No Python needed.
@@ -51,31 +40,46 @@ Non-programmers can use a pre-built app that bundles everything:
   self-contained folder/app you can share.
 
 Unsigned-app note: Windows may say "unknown publisher" (More info → Run anyway)
-and macOS may block the first launch (right-click → Open → Open). Normal for
-un-notarised software.
+and macOS may block the first launch (right-click → Open → Open). 
+
+---
+## Install and run (from source) (If you have Python installed)
+
+Download the repository and unzip everything into one folder. ## Requires Python 3.10 or newer ##
+
+```
+pip install -r requirements.txt
+python dz_app.py
+```
+
+That opens the app. Open your Excel file, pick the sample, age, and error columns,
+tick some samples, and the figure appears.
 
 ---
 
 ## The three tabs in detail
 
-**KDE + pie.** Young/old age ranges, the two KDE bandwidths and bin widths (or
+**KDE + pie** -- Young/old age ranges, the two KDE bandwidths and bin widths (or
 a single combined panel with its own bandwidth), peak-label threshold, pie
 range, pie size and label placement, column widths, row height, spacing and
 every font size are controls on the right-hand panel.
+You can choose the number of provenance groups, rename and color them accordingly from the 
+bottom left panel. This will appear in the legend; you can turn it off as well.
 
-**MDS.** Age threshold, dissimilarity metric, KDE bandwidth (for the
+**MDS** -- Age threshold, dissimilarity metric, KDE bandwidth (for the
 correlation metrics), metric vs non-metric scaling, seed and restarts, point
 size and colour, labels and neighbour lines. A "Consistent axes" group scales
-every figure to the same square axes so separate panels line up. This only
-reframes the plot, it does not change the statistics. Stress is reported in the
-caption.
+every figure to the same square axes if you plan to plot multiple figures and 
+maintain consistent scaling for all of them. This only reframes the plot; it 
+does not change the statistics. Stress is reported in the caption.
 
-**MDA.** Choose the error column and whether it is 1σ or 2σ, and whether to
-report at 1σ or 2σ. The table gives YSG, YGC1σ and YGC2σ as `age ± error` for
-every ticked sample and exports to CSV. The rank plot shows the youngest grains
-with nested 1σ/2σ error bars, the chosen cluster highlighted, and a band at the
-MDA. "Exclude the single youngest grain" drops an obvious outlier before every
-method runs.
+**MDA** -- Choose the error column and whether it is 1σ or 2σ, and whether to
+report at 1σ or 2σ. The table at the bottom right gives YSG, YGC1σ and YGC2σ as 
+`age ± error` for every ticked sample and exports to CSV. Choose the desired method 
+from the drop-down menu in the middle panel on the right-hand side. The rank plot shows 
+the youngest grains with nested 1σ/2σ error bars; the grains falling into the chosen
+cluster are highlighted. The MDA appears as a band. 
+"Exclude the single youngest grain" drops an obvious outlier before every method runs.
 
 ---
 
@@ -109,7 +113,8 @@ setting on every tab. **Load project** restores all of it.
 The **preview** is a smooth image view, like a PDF reader: the figure is
 rendered once and zoom/scroll never re-render it. Mouse wheel scrolls,
 Ctrl+wheel zooms, the View dropdown fits width/page or a fixed percentage, and
-F11 gives the figure the whole window. 
+F11 gives the figure the whole window. You can untick and stop the live preview if you want 
+and use F5 or click redraw to regenerate the plot after you make any changes. 
 
 **Export** (Ctrl+E) rebuilds the figure from the currently ticked samples, then
 lets you pick format (PDF / SVG / PNG), size and resolution. Text is kept live and editable in
