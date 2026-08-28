@@ -11,7 +11,6 @@ statistics live in plain, documented Python modules, so anyone who *does*
 program can read, reuse, or modify them.
 
 ---
-
 ## What it does
 
 - **KDE + pie** - one row per sample: a young-age panel, an old-age panel (or a
@@ -55,6 +54,9 @@ python dz_app.py
 That opens the app. Open your Excel file, pick the sample, age, and error columns,
 tick some samples, and the figure appears.
 
+---
+FOLLOW THE DATA STRUCTURE EXAMPLE PROVIDED TO ARRANGE YOUR DATA ACCORDINGLY. 
+YOU NEED 3 COLUMNS: sample name, age, and error. 
 ---
 
 ## The three tabs in detail
